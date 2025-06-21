@@ -184,3 +184,42 @@ int hash_table_remove(HashTable *hash_table, void *key) {
 
   return -1;
 }
+void print(HashTable *hash_table) {
+    int count;
+    count = 0;
+
+    while (count < hash_table->size) {
+        HashEntry *entry = hash_table->buckets[count]; 
+        HashEntry *first = entry;
+        while (entry != NULL) {
+            switch (hash_table->hash_key_type) {
+                case HASH_TYPE_INT:
+                    printf("Key: %d ", *(int*)entry->key);
+                    break;
+                case HASH_TYPE_STRING:
+                    printf("Key: %s ", (char*)entry->key);
+                    break;
+                case HASH_TYPE_PTR:
+                    printf("Key: %p ", entry->key);
+                    break;
+                default:
+                    break;
+            }
+            switch (hash_table->hash_value_type) {
+                case HASH_TYPE_INT:
+                    printf("Value: %d\n", *(int*)entry->value);
+                    break;
+                case HASH_TYPE_STRING:
+                    printf("Value: %s\n", (char*)entry->value);
+                    break;
+                case HASH_TYPE_PTR:
+                    printf("Value: %p\n", entry->value);
+                    break;
+                default:
+                    break;
+            }
+            entry = entry->next;
+        }
+        ++count;
+    }
+}

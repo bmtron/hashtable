@@ -28,6 +28,7 @@ int main() {
     hash_table_put(hash_table, (void*)name2, (void*)age2);
     hash_table_put(hash_table, (void*)name3, (void*)age3);
 
+    print(hash_table);
     printf("data added to hashtable\n");
     void* age1_hashed = hash_table_get(hash_table, (void*)name1);
     printf("Age 1 retrieved: %d\n", *(int*)age1_hashed);

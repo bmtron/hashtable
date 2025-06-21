@@ -50,3 +50,4 @@ int key_value_compare(HashEntry *hash_entry, void *key, void *value, int key_typ
 // if it does exist and was successfully removed, return 1;
 // all other results (likely errors) return -1.
 int hash_table_remove(HashTable *hash_table, void *key);
+void print(HashTable *hash_table);
